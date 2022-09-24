@@ -18,7 +18,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-
 import com.exam.result.model.Result;
 import com.exam.result.repository.ResultRepository;
 
@@ -110,6 +109,21 @@ public class ResultController {
     try {
       resultRepository.deleteAll();
       return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    } catch (Exception e) {
+      return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+  }
+  
+  
+  @GetMapping("/results/finalized")
+  public ResponseEntity<List<Result>> findByFinalized() {
+    try {
+      List<Result> results = resultRepository.findByFinalized(true);
+
+      if (results.isEmpty()) {
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+      }
+      return new ResponseEntity<>(results, HttpStatus.OK);
     } catch (Exception e) {
       return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
     }
