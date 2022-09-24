@@ -20,7 +20,7 @@ public class Result {
 
   }
 
-  public Result(String name, String index, boolean finalized) {
+  public Result(String name, String index, String maths,String science,String english,String it,boolean finalized) {
     this.name = name;
     this.index = index;
     this.maths=maths;
@@ -105,6 +105,6 @@ public void setit(String it) {
 
   @Override
   public String toString() {
-    return "Tutorial [id=" + id + ", name=" + name + ", index=" + index + ",maths=" + maths + ",science=" + science + ",english=" + english + " ,it=" + it + ", finalized=" + finalized + "]";
+    return "Result [id=" + id + ", name=" + name + ", index=" + index + ",maths=" + maths + ",science=" + science + ",english=" + english + " ,it=" + it + ", finalized=" + finalized + "]";
   }
 }
