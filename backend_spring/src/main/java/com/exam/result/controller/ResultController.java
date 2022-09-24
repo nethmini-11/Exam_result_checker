@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.bezkoder.spring.data.mongodb.model.Tutorial;
 import com.exam.result.model.Result;
 import com.exam.result.repository.ResultRepository;
 
@@ -60,6 +61,16 @@ public class ResultController {
       return new ResponseEntity<>(resultData.get(), HttpStatus.OK);
     } else {
       return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
+  }
+  
+  @PostMapping("/results")
+  public ResponseEntity<Result> createResult(@RequestBody Result result) {
+    try {
+    	Result _result = resultRepository.save(new Result(result.getname(), result.getindex(),result.getmaths(),result.getscience(),result.getenglish(),result.getit(), false));
+      return new ResponseEntity<>(_result, HttpStatus.CREATED);
+    } catch (Exception e) {
+      return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
     }
   }
 }
