@@ -9,7 +9,8 @@ import com.exam.result.model.Result;
 
 
 public interface ResultRepository extends MongoRepository<Result, String> {
-  List<Result> findByPublished(boolean finalized);
-  List<Result> findByTitleContaining(String name);
+  List<Result> findByFinalized(boolean finalized);
+  List<Result> findByNameContaining(String name);
+  List<Result> findByIndexContaining(String index);
 }
 
