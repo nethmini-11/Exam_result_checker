@@ -104,4 +104,14 @@ public class ResultController {
     }
   }
   
+  
+  @DeleteMapping("/results")
+  public ResponseEntity<HttpStatus> deleteAllResults() {
+    try {
+      resultRepository.deleteAll();
+      return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    } catch (Exception e) {
+      return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+  }
 }
