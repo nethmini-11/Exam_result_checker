@@ -93,4 +93,15 @@ public class ResultController {
   }
   
   
+  
+  @DeleteMapping("/results/{id}")
+  public ResponseEntity<HttpStatus> deleteResult(@PathVariable("id") String id) {
+    try {
+      resultRepository.deleteById(id);
+      return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    } catch (Exception e) {
+      return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+  }
+  
 }
