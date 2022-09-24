@@ -19,7 +19,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.bezkoder.spring.data.mongodb.model.Tutorial;
 import com.exam.result.model.Result;
 import com.exam.result.repository.ResultRepository;
 
@@ -73,4 +72,25 @@ public class ResultController {
       return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
     }
   }
+  
+  @PutMapping("/results/{id}")
+  public ResponseEntity<Result> updateResult(@PathVariable("id") String id, @RequestBody Result result) {
+    Optional<Result> resultData = resultRepository.findById(id);
+
+    if (resultData.isPresent()) {
+    	Result _result = resultData.get();
+      _result.setname(result.getname());
+      _result.setindex(result.getindex());
+      _result.setmaths(result.getmaths());
+      _result.setscience(result.getscience());
+      _result.setenglish(result.getenglish());
+      _result.setit(result.getit());
+      _result.setfinalized(result.isfinalized());
+      return new ResponseEntity<>(resultRepository.save(_result), HttpStatus.OK);
+    } else {
+      return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
+  }
+  
+  
 }
