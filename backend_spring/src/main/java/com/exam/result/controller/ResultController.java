@@ -22,7 +22,7 @@ import com.exam.result.model.Result;
 import com.exam.result.repository.ResultRepository;
 
 
-@CrossOrigin(origins = "http://localhost:8081")
+@CrossOrigin(origins = "http://localhost:8082")
 @RestController
 @RequestMapping("/api")
 public class ResultController {
