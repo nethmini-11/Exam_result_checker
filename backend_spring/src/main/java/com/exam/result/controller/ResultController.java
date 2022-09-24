@@ -51,4 +51,15 @@ public class ResultController {
     }
   }
 
+  
+  @GetMapping("/results/{id}")
+  public ResponseEntity<Result> getresultById(@PathVariable("id") String id) {
+    Optional<Result> resultData = resultRepository.findById(id);
+
+    if (resultData.isPresent()) {
+      return new ResponseEntity<>(resultData.get(), HttpStatus.OK);
+    } else {
+      return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
+  }
 }
