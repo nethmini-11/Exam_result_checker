@@ -1,11 +1,10 @@
 import React, { Component } from "react";
 import ResultDataService from "../services/result-service";
-
+import "../App.css";
 export default class AddResult extends Component {
   constructor(props) {
     super(props);
-    // this.onChangename = this.onChangename.bind(this);
-    // this.onChangeindex = this.onChangeindex.bind(this);
+    
     this.saveResult = this.saveResult.bind(this);
     this.newResult = this.newResult.bind(this);
 
@@ -21,17 +20,10 @@ export default class AddResult extends Component {
     };
   }
 
-//   onChangeTitle(e) {
-//     this.setState({
-//       title: e.target.value
-//     });
-//   }
-// 
-//   onChangeDescription(e) {
-//     this.setState({
-//       description: e.target.value
-//     });
-//   }
+  onInputValueChange = (e) => {
+    this.setState({ [e.target.id]: e.target.value });
+}
+
 
   saveResult() {
     var data = {
@@ -48,7 +40,6 @@ export default class AddResult extends Component {
         this.setState({
           id: response.data.id,
           name: response.data.name,
-          index: response.data.index,
           index: response.data.index,
           maths: response.data.maths,
           science: response.data.science,
@@ -93,7 +84,7 @@ export default class AddResult extends Component {
         ) : (
           <div>
             <div className="form-group">
-              <label htmlFor="name"></label>
+              <label htmlFor="name">Name</label>
               <input
                 type="text"
                 className="form-control"
@@ -101,11 +92,12 @@ export default class AddResult extends Component {
                 required
                 value={this.state.name}
                 name="name"
+                onChange={(e) => this.onInputValueChange(e)}
               />
             </div>
 
             <div className="form-group">
-              <label htmlFor="index">Description</label>
+              <label htmlFor="index">Index</label>
               <input
                 type="text"
                 className="form-control"
@@ -113,6 +105,7 @@ export default class AddResult extends Component {
                 required
                 value={this.state.index}
                 name="index"
+                onChange={(e) => this.onInputValueChange(e)}
               />
             </div>
 
@@ -125,6 +118,7 @@ export default class AddResult extends Component {
                 required
                 value={this.state.maths}
                 name="maths"
+                onChange={(e) => this.onInputValueChange(e)}
               />
             </div>
 
@@ -137,6 +131,7 @@ export default class AddResult extends Component {
                 required
                 value={this.state.science}
                 name="science"
+                onChange={(e) => this.onInputValueChange(e)}
               />
             </div>
 
@@ -149,6 +144,7 @@ export default class AddResult extends Component {
                 required
                 value={this.state.english}
                 name="english"
+                onChange={(e) => this.onInputValueChange(e)}
               />
             </div>
 
@@ -161,6 +157,7 @@ export default class AddResult extends Component {
                 required
                 value={this.state.it}
                 name="it"
+                onChange={(e) => this.onInputValueChange(e)}
               />
             </div>
 

@@ -25,8 +25,8 @@ class ResultDataService {
     return http.delete(`/results`);
   }
 
-  findByTitle(title) {
-    return http.get(`/results?title=${title}`);
+  findByName(name) {
+    return http.get(`/results?name=${name}`);
   }
 }
 
