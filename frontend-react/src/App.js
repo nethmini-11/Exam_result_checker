@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Routes, Route, Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
-
+import ResultListView from "./components/results-listview";
 import AddResult from "./components/add-result";
 import Result from "./components/actions-result";
 import ResultList from "./components/results-list";
@@ -12,27 +12,36 @@ class App extends Component {
     return (
       <div>
         <img className="imageheader" src = { cover } alt="Hotel" />
-        <nav className="navbar navbar-expand navbar-dark bg-dark">
-          <Link to={"/results"} className="navbar-brand">
-            bezKoder
+        <nav className="navbar navbar-expand ">
+          <Link to={"/allresults"} className="navbar-brand">
+            E-Result
           </Link>
           <div className="navbar-nav mr-auto">
             <li className="nav-item">
-              <Link to={"/results"} className="nav-link">
-                results
+              <Link to={"/allresults"} className="nav-link">
+                All Results
               </Link>
             </li>
             <li className="nav-item">
               <Link to={"/add"} className="nav-link">
-                Add
+                Add New 
               </Link>
             </li>
+            <li className="nav-item">
+            <Link
+                to={"/results"}
+                className="nav-link">
+                Edit Results
+              </Link>
+            </li>
+            
           </div>
         </nav>
 
         <div className="container mt-3">
           <Routes>
-            <Route path="/" element={<ResultList/>} />
+            <Route path="/" element={<ResultListView/>} />
+            <Route path="/allresults" element={<ResultListView/>} />
             <Route path="/results" element={<ResultList/>} />
             <Route path="/add" element={<AddResult/>} />
             <Route path="/results/:id" element={<Result/>} />

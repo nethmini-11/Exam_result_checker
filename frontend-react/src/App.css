@@ -36,34 +36,96 @@ code {
 .gap{
   height: 500px;
 }
+.btn{
+  background-color: rgb(245, 139, 0);
+  color: #000;
+}
 .btn1{
-  margin-bottom: 100px;
+  margin-bottom: 60px;
   border-radius: 10px;
   border: transparent;
   height: 40px;
   width: 350px;
   margin-left:20%;
   background-color: rgb(245, 139, 0);
+  color: white;
+  font-weight: 600;
+}
+.btn-remove{
+  background-color: rgb(208, 1, 1);
+  margin-bottom: 20px;
+  margin-top: 30px;
+  color: white;
+  border: transparent;
+  height: 40px;
+  width: 100px;
+  border-radius: 6px;
 
 }
+.buttonUpdate{
+  margin-bottom: 60px;
+  border-radius: 10px;
+  border: transparent;
+  height: 40px;
+  width: 150px;
+  margin-left:50px;
+  background-color: rgb(245, 139, 0);
+  color: white;
+  font-weight: 600;
+}
 .container1{
-  margin-top: 50px;
-  margin-bottom: 50px;
+    margin-top: 50px;
+    margin-bottom: 50px;
     border: 1px solid  #1b1b1c;
     border-radius: 2px;
     width: 500px;
-    height: 700px;
-      display: inline-block;
-      margin-left: 30%;
-      margin-right: auto;
+    height: auto;
+    display: inline-block;
+    margin-left: 30%;
+    margin-right: auto;
     background-size: 100% 100%;
     
   }
+  .container2{
+    margin-top: 50px;
+    margin-bottom: 50px;
+    border: 1px solid  #1b1b1c;
+    border-radius: 2px;
+    width: 500px;
+    height: auto;
+    display: inline-block;
+    margin-left: 60%;
+    margin-right: auto;
+    background-size: 100% 100%;
+    align-content: center;
+      
+    }
+  strong{
+      margin-left: 50px;
+      margin-bottom: 50px;
+    }
+ .link-update{
+  color:white;
+  font-weight: 500;
+ }
+ .col{
+  margin-left: 100px;
+ }
+  .heading{
+    margin-top: 10px;
+    margin-left: 50px;
+    color: rgb(245, 139, 0);
+  }
+  .list-result{
+    margin-top: 50px;
+  }
   .alert {
-    padding: 20px;
-    background-color: #f44336;
-    color: white;
-    font-size: 12;
+    color: rgb(208, 1, 1);
+    font-size:10px;
+    margin-left:20%;
+    padding:5px;
+    font-weight: bold;
+    
   }
   .form-label{
     margin-left:20%;
@@ -74,9 +136,33 @@ code {
     width: 350px;
     margin-left:20%;
   }
-
+  .row1{
+    width: 350px;
+    margin-left:20%;
+  }
   .card-title{
-    margin-left: 50%;
+    margin-left: 60%;
     color: black;
     font-size: medium;
+  }
+
+  .navbar{
+    background-color: black;
+  }
+
+  .navbar-brand{
+    color: rgb(245, 139, 0);
+  }
+
+  .nav-link{
+    color: rgb(255, 252, 251);
+  }
+
+  .searcharea{
+    margin-left: 10px;
+    margin-top: 50px;
+  }
+
+  .container{
+    height: auto;
   }

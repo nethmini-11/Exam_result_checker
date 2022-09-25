@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import ResultDataService from "../services/result-service";
 import { withRouter } from '../common/with-router';
+import "../App.css";
 
 class Result extends Component {
   constructor(props) {
@@ -12,7 +13,7 @@ class Result extends Component {
     this.onChangeenglish = this.onChangeenglish.bind(this);
     this.onChangeit = this.onChangeit.bind(this);
     this.getResult = this.getResult.bind(this);
-    this.updatefinalized = this.updatefinalized.bind(this);
+    this.updateFinalized = this.updateFinalized.bind(this);
     this.updateResult = this.updateResult.bind(this);
     this.deleteResult = this.deleteResult.bind(this);
 
@@ -121,11 +122,15 @@ class Result extends Component {
       });
   }
 
-  updatefinalized(status) {
+  updateFinalized(status) {
     var data = {
       id: this.state.currentResult.id,
       name: this.state.currentResult.name,
       index: this.state.currentResult.index,
+      maths:this.state.currentResult.maths,
+      science:this.state.currentResult.science,
+      english:this.state.currentResult.english,
+      it:this.state.currentResult.it,
       finalized: status
     };
 
@@ -175,13 +180,16 @@ class Result extends Component {
     const { currentResult } = this.state;
 
     return (
-      <div>
+      <div class="container1">
+      <div className="row g-0">
+      <div className="cl">
+      <div className="card-body">
+      <h4 className="card-title  mt-3">Edit Result</h4>
         {currentResult ? (
           <div className="edit-form">
-            <h4>Result</h4>
             <form>
               <div className="form-group">
-                <label htmlFor="name">Name</label>
+                <label className="form-label" htmlFor="name">Name</label>
                 <input
                   type="text"
                   className="form-control"
@@ -191,7 +199,7 @@ class Result extends Component {
                 />
               </div>
               <div className="form-group">
-                <label htmlFor="index">Index</label>
+                <label className="form-label" htmlFor="index">Index</label>
                 <input
                   type="text"
                   className="form-control"
@@ -201,7 +209,7 @@ class Result extends Component {
                 />
               </div>
               <div className="form-group">
-              <label htmlFor="maths">Grade Obtained For Maths</label>
+              <label className="form-label" htmlFor="maths">Grade Obtained For Maths</label>
               <input
                 type="text"
                 className="form-control"
@@ -213,7 +221,7 @@ class Result extends Component {
             </div>
 
             <div className="form-group">
-              <label htmlFor="science">Grade Obtained For Science</label>
+              <label className="form-label" htmlFor="science">Grade Obtained For Science</label>
               <input
                 type="text"
                 className="form-control"
@@ -225,7 +233,7 @@ class Result extends Component {
             </div>
 
             <div className="form-group">
-              <label htmlFor="english">Grade Obtained For English</label>
+              <label  className="form-label" htmlFor="english">Grade Obtained For English</label>
               <input
                 type="text"
                 className="form-control"
@@ -237,7 +245,7 @@ class Result extends Component {
             </div>
 
             <div className="form-group">
-              <label htmlFor="it">Grade Obtained For English</label>
+              <label className="form-label" htmlFor="it">Grade Obtained For English</label>
               <input
                 type="text"
                 className="form-control"
@@ -249,30 +257,30 @@ class Result extends Component {
             </div>
 
 
-              <div className="form-group">
+              <div className="row1">
                 <label>
-                  <strong>Status:</strong>
+                  <h5>Status:</h5>
                 </label>
                 {currentResult.finalized ? "finalized" : "Pending"}
               </div>
             </form>
-
+      <div className="row1">
             {currentResult.finalized ? (
               <button
                 className="badge badge-primary mr-2"
                 onClick={() => this.updateFinalized(false)}
               >
-                UnPublish
+                UnFinalized
               </button>
             ) : (
               <button
                 className="badge badge-primary mr-2"
                 onClick={() => this.updateFinalized(true)}
               >
-                Publish
+                Finalized
               </button>
             )}
-
+     
             <button
               className="badge badge-danger mr-2"
               onClick={this.deleteResult}
@@ -282,19 +290,22 @@ class Result extends Component {
 
             <button
               type="submit"
-              className="badge badge-success"
+              className="badge badge-success mr-2"
               onClick={this.updateResult}
             >
               Update
-            </button>
+            </button></div>
             <p>{this.state.message}</p>
           </div>
         ) : (
           <div>
             <br />
-            <p>Please click on a Result...</p>
+            <p>Please click on a name to view result</p>
           </div>
         )}
+      </div>
+      </div>
+      </div>
       </div>
     );
   }

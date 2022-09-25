@@ -17,6 +17,9 @@ export default class AddResult extends Component {
       english:"",
       it:"",
       nameError:"",
+      indexError:"",
+      subjectError:"",
+      submitted:"",
       finalized: false,
     };
   }
@@ -29,25 +32,30 @@ export default class AddResult extends Component {
 
 validate = () =>{
 let nameError =""
+let indexError =""
+let subjectError=""
 if (!this.state.name){
   nameError="Name is required"
+  
 }
-if(nameError){
-  this.setState({nameError});
+
+if (!this.state.index){
+  indexError="Index is required"
+  
+  
+}
+
+if (!this.state.maths || !this.state.science || !this.state.english || !this.state.it){
+  subjectError="Result is required"  
+}
+
+if(nameError || indexError || subjectError){
+  this.setState({nameError,indexError,subjectError});
   return false;
 }
 return true;
 }
 
-// handleSubmit =event =>{
-//   event.preventDefault();
-//   const isValid =this.validate();
-//   if(isValid){
-//     console.log(this.state);
-// 
-//     
-//   }
-// }
   saveResult(e) {
     e.preventDefault();
     const isValid =this.validate();
@@ -106,7 +114,7 @@ return true;
       <div className="row g-0">
       <div className="cl">
       <div className="card-body">
-                                <h4 className="card-title  mt-3">Add Restuarant</h4>
+                                <h4 className="card-title  mt-3">Add Result</h4>
                                 <form >
         {this.state.submitted ? (
           <div>
@@ -142,7 +150,7 @@ return true;
                 onChange={(e) => this.onInputValueChange(e)}
               />
             </div>
-
+            {this.state.indexError ?(<div className="alert">{this.state.indexError}</div>):null}
             <div className="form-group">
               <label className="form-label" htmlFor="maths">Grade Obtained For Maths</label>
               <input
@@ -155,7 +163,7 @@ return true;
                 onChange={(e) => this.onInputValueChange(e)}
               />
             </div>
-
+            {this.state.subjectError ?(<div className="alert">{this.state.subjectError}</div>):null}
             <div className="form-group">
               <label className="form-label" htmlFor="science">Grade Obtained For Science</label>
               <input
@@ -168,7 +176,7 @@ return true;
                 onChange={(e) => this.onInputValueChange(e)}
               />
             </div>
-
+            {this.state.subjectError ?(<div className="alert">{this.state.subjectError}</div>):null}
             <div className="form-group">
               <label className="form-label" htmlFor="english">Grade Obtained For English</label>
               <input
@@ -181,7 +189,7 @@ return true;
                 onChange={(e) => this.onInputValueChange(e)}
               />
             </div>
-
+            {this.state.subjectError ?(<div className="alert">{this.state.subjectError}</div>):null}
             <div className="form-group">
               <label className="form-label" htmlFor="it">Grade Obtained For English</label>
               <input
@@ -194,7 +202,7 @@ return true;
                 onChange={(e) => this.onInputValueChange(e)}
               />
             </div>
-
+            {this.state.subjectError ?(<div className="alert">{this.state.subjectError}</div>):null}
 
             <button type="submit" onClick={this.saveResult} className="btn1">
               Submit

@@ -1,15 +1,14 @@
 import React, { Component } from "react";
 import ResultDataService from "../services/result-service";
-import { Link } from "react-router-dom";
 import "../App.css";
-export default class ResultList extends Component {
+export default class ResultListView extends Component {
   constructor(props) {
     super(props);
     this.onChangeSearchName = this.onChangeSearchName.bind(this);
     this.retrieveResults = this.retrieveResults.bind(this);
     this.refreshList = this.refreshList.bind(this);
     this.setActiveResult = this.setActiveResult.bind(this);
-    this.removeAllResults = this.removeAllResults.bind(this);
+    //this.removeAllResults = this.removeAllResults.bind(this);
     this.searchName = this.searchName.bind(this);
 
     this.state = {
@@ -60,16 +59,7 @@ export default class ResultList extends Component {
     });
   }
 
-  removeAllResults() {
-    ResultDataService.deleteAll()
-      .then(response => {
-        console.log(response.data);
-        this.refreshList();
-      })
-      .catch(e => {
-        console.log(e);
-      });
-  }
+  
 
   searchName() {
     this.setState({
@@ -135,12 +125,7 @@ export default class ResultList extends Component {
               ))}
           </ul>
 
-          <button  
-            className="btn-remove"
-            onClick={this.removeAllResults}
-          >
-            Remove All
-          </button>
+          
         </div>
         <div className="col-md-6">
           {currentResult ? (
@@ -188,13 +173,7 @@ export default class ResultList extends Component {
                 </label>{" "}
                 {currentResult.published ? "Published" : "Pending"}
               </div>
-              <button className="buttonUpdate">
-              <Link
-                to={"/results/" + currentResult.id}
-                className="link-update" 
-              >
-                Update Result
-              </Link></button></div>
+              </div>
           ) : (
             <div>
               <br />
