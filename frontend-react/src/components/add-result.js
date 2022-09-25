@@ -192,7 +192,7 @@ return true;
             </div>
             {this.state.subjectError ?(<div className="alert">{this.state.subjectError}</div>):null}
             <div className="form-group">
-              <label className="form-label" htmlFor="it">Grade Obtained For English</label>
+              <label className="form-label" htmlFor="it">Grade Obtained For IT</label>
               <input
                 type="text"
                 className="form-control"

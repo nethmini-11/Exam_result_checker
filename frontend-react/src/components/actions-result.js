@@ -246,7 +246,7 @@ class Result extends Component {
             </div>
 
             <div className="form-group">
-              <label className="form-label" htmlFor="it">Grade Obtained For English</label>
+              <label className="form-label" htmlFor="it">Grade Obtained For IT</label>
               <input
                 type="text"
                 className="form-control"
