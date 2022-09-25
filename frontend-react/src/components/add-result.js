@@ -119,8 +119,8 @@ return true;
                                 <form >
         {this.state.submitted ? (
           <div>
-            <h4>result Added Successfully</h4>
-            <button className="btn btn-success" onSubmit={this.saveResult}>
+            <h4 className="heading">Result Added Successfully</h4>
+            <button className="btn1" onSubmit={this.saveResult}>
               Add Result
             </button>
           </div>
