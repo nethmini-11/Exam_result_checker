@@ -16,16 +16,42 @@ export default class AddResult extends Component {
       science:"",
       english:"",
       it:"",
+      nameError:"",
       finalized: false,
     };
   }
 
   onInputValueChange = (e) => {
     this.setState({ [e.target.id]: e.target.value });
+
+    
 }
 
+validate = () =>{
+let nameError =""
+if (!this.state.name){
+  nameError="Name is required"
+}
+if(nameError){
+  this.setState({nameError});
+  return false;
+}
+return true;
+}
 
-  saveResult() {
+// handleSubmit =event =>{
+//   event.preventDefault();
+//   const isValid =this.validate();
+//   if(isValid){
+//     console.log(this.state);
+// 
+//     
+//   }
+// }
+  saveResult(e) {
+    e.preventDefault();
+    const isValid =this.validate();
+    if(isValid){
     var data = {
       name: this.state.name,
       index: this.state.index,
@@ -34,7 +60,7 @@ export default class AddResult extends Component {
       english:this.state.english,
       it:this.state.it,
     };
-
+    
     ResultDataService.create(data)
       .then(response => {
         this.setState({
@@ -53,7 +79,7 @@ export default class AddResult extends Component {
       })
       .catch(e => {
         console.log(e);
-      });
+      });}
   }
 
   newResult() {
@@ -69,22 +95,30 @@ export default class AddResult extends Component {
 
       submitted: false
     });
-  }
 
+    
+  }
+  
   render() {
+    
     return (
-      <div className="submit-form">
+      <div class="container1">
+      <div className="row g-0">
+      <div className="cl">
+      <div className="card-body">
+                                <h4 className="card-title  mt-3">Add Restuarant</h4>
+                                <form >
         {this.state.submitted ? (
           <div>
             <h4>result Added Successfully</h4>
-            <button className="btn btn-success" onClick={this.newResult}>
+            <button className="btn btn-success" onSubmit={this.saveResult}>
               Add Result
             </button>
           </div>
         ) : (
           <div>
             <div className="form-group">
-              <label htmlFor="name">Name</label>
+              <label className="form-label" htmlFor="name">Name</label>
               <input
                 type="text"
                 className="form-control"
@@ -95,9 +129,9 @@ export default class AddResult extends Component {
                 onChange={(e) => this.onInputValueChange(e)}
               />
             </div>
-
+          {this.state.nameError ?(<div className="alert">{this.state.nameError}</div>):null}
             <div className="form-group">
-              <label htmlFor="index">Index</label>
+              <label className="form-label" htmlFor="index">Index</label>
               <input
                 type="text"
                 className="form-control"
@@ -110,7 +144,7 @@ export default class AddResult extends Component {
             </div>
 
             <div className="form-group">
-              <label htmlFor="maths">Grade Obtained For Maths</label>
+              <label className="form-label" htmlFor="maths">Grade Obtained For Maths</label>
               <input
                 type="text"
                 className="form-control"
@@ -123,7 +157,7 @@ export default class AddResult extends Component {
             </div>
 
             <div className="form-group">
-              <label htmlFor="science">Grade Obtained For Science</label>
+              <label className="form-label" htmlFor="science">Grade Obtained For Science</label>
               <input
                 type="text"
                 className="form-control"
@@ -136,7 +170,7 @@ export default class AddResult extends Component {
             </div>
 
             <div className="form-group">
-              <label htmlFor="english">Grade Obtained For English</label>
+              <label className="form-label" htmlFor="english">Grade Obtained For English</label>
               <input
                 type="text"
                 className="form-control"
@@ -149,7 +183,7 @@ export default class AddResult extends Component {
             </div>
 
             <div className="form-group">
-              <label htmlFor="it">Grade Obtained For English</label>
+              <label className="form-label" htmlFor="it">Grade Obtained For English</label>
               <input
                 type="text"
                 className="form-control"
@@ -162,11 +196,16 @@ export default class AddResult extends Component {
             </div>
 
 
-            <button onClick={this.saveResult} className="btn btn-success">
+            <button type="submit" onClick={this.saveResult} className="btn1">
               Submit
             </button>
+            
           </div>
         )}
+      </form>
+      </div>
+      </div>
+      </div>
       </div>
     );
   }

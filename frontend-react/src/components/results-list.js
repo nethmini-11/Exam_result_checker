@@ -93,7 +93,7 @@ export default class ResultList extends Component {
     const { searchName, results, currentResult, currentIndex } = this.state;
 
     return (
-      <div className="container">
+      
       <div className="list row">
         <div className="col-md-8">
           <div className="input-group mb-3">
@@ -203,7 +203,8 @@ export default class ResultList extends Component {
           )}
         </div>
       </div>
-    </div>
+    
+    
     );
   }
 }
