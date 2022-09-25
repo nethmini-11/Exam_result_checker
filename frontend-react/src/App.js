@@ -6,12 +6,13 @@ import ResultListView from "./components/results-listview";
 import AddResult from "./components/add-result";
 import Result from "./components/actions-result";
 import ResultList from "./components/results-list";
-import  cover from "./components/images/cover.jpg"
+import  cover from "./components/images/cover.png"
+import Welcome from "./components/welcome";
 class App extends Component {
   render() {
     return (
       <div>
-        <img className="imageheader" src = { cover } alt="Hotel" />
+        <img className="imageheader" src = { cover } alt="cover" />
         <nav className="navbar navbar-expand ">
           <Link to={"/allresults"} className="navbar-brand">
             E-Result
@@ -40,7 +41,7 @@ class App extends Component {
 
         <div className="container mt-3">
           <Routes>
-            <Route path="/" element={<ResultListView/>} />
+            <Route path="/" element={<Welcome/>} />
             <Route path="/allresults" element={<ResultListView/>} />
             <Route path="/results" element={<ResultList/>} />
             <Route path="/add" element={<AddResult/>} />

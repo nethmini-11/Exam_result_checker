@@ -111,6 +111,7 @@ return true;
     
     return (
       <div class="container1">
+        <div class="line"></div>
       <div className="row g-0">
       <div className="cl">
       <div className="card-body">
@@ -214,6 +215,7 @@ return true;
       </div>
       </div>
       </div>
+      <div class="line"></div>
       </div>
     );
   }

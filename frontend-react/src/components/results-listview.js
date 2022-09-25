@@ -83,7 +83,8 @@ export default class ResultListView extends Component {
     const { searchName, results, currentResult, currentIndex } = this.state;
 
     return (
-      <div className="containter border">
+      <div className="container-view">
+        <div class="line-view"></div>
       <div className="row">
         <div className="searcharea">
           <div className="input-group mb-3">
@@ -182,6 +183,7 @@ export default class ResultListView extends Component {
           )}
         </div>
       </div>
+      <div class="line-view"></div>
     </div>
     
     );
