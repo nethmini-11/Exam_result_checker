@@ -4,8 +4,8 @@
  
  # Technologies Used
  
- ## Front End === ReactJs
- ## Back end === Java SpringBoot
+ ## Front End === ReactJs(IDE VsCode)
+ ## Back end === Java SpringBoot(IDE STS)
  ## Database Connection === MongoDB
 
 
